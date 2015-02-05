@@ -1,0 +1,27 @@
+﻿
+@model Blog.WebUI.Models.ArticleContentModel
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+                <h1>@Model.Title</h1>
+                <span class="meta">Posted by <a href="#">@Model.AuthorName</a> @Model.PostDate </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <p>@Model.Content</p>
+            </div>
+        </div>
+    </div>
+</article>
+<hr>
+
+
+

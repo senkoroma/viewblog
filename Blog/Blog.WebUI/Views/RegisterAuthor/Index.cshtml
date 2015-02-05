@@ -1,0 +1,72 @@
+﻿@model Blog.WebUI.Models.AuthorModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+@{
+    string userCheckErr = ViewBag.UserCheckErr;
+}
+
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <h1> Come on, become The Author !</h1>
+                <div class="post-preview">
+                    @using (Html.BeginForm())
+                    {
+                        <h5>Name:</h5>
+                        
+                        if (userCheckErr != null)
+                        {
+                            <div class="alert-info">
+                                <h5>@userCheckErr</h5>
+                            </div>
+                        }
+                        
+                        @Html.ValidationSummary()
+                        @Html.TextBoxFor(x => x.Name,
+                                                    new
+                                                    {
+                                                        placeholder = "Author must have a name...",
+                                                        Class = "form-control input-sm"
+                                                    })
+
+
+                        <h5>Email:</h5>
+                        @Html.TextBoxFor(x => x.Email,
+                                                    new
+                                                    {
+                                                        placeholder = "Without your email we will not be able to inform you about important things...",
+                                                        Class = "form-control input-sm"
+                                                    })
+
+                        <h5>Login:</h5>
+                        @Html.TextBoxFor(x => x.Login,
+                                                     new
+                                                     {
+                                                         placeholder = "Use this for authentification ...",
+                                                         Class = "form-control input-sm"
+                                                     })
+
+                       <h5>Password:</h5>
+                        @Html.PasswordFor(x => x.Password,
+                                                     new
+                                                     {
+                                                         placeholder = "And of course... password ...",
+                                                         Class = "form-control input-sm"
+                                                     })
+
+                        <p>
+                            <input type="submit" class="btn btn-default" value="Save" id="save-author-btn" name="save-author-btn" />
+                        </p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</article>
+
+

@@ -1,0 +1,64 @@
+﻿@model Blog.WebUI.Models.ArticleContentModel
+
+@{
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<article>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+               <h1> New article</h1>
+                <div class="post-preview">
+                    @using (Html.BeginForm())
+                    {
+                        <h5>Title:</h5>
+                        
+                        @Html.TextBoxFor(x => x.Title, 
+                                                    new
+                                                    {
+                                                        placeholder = "Article's title...",
+                                                        Class = "form-control input-sm"
+                                                    })
+                        
+
+                        <h5>Point:</h5>
+                        
+                         @Html.TextBoxFor(x => x.Point, 
+                                                    new
+                                                    {
+                                                        placeholder = "Short description...",
+                                                        Class = "form-control input-sm"
+                                                    })
+
+                        <h5>Content:</h5>
+                        
+                         @Html.TextAreaFor(x => x.Content,
+                                                     new
+                                                     {
+                                                         rows = 15,
+                                                         placeholder="Article's content...",
+                                                         Class = "form-control input-sm"  
+                                                     })
+                        
+                        @Html.TextBoxFor(x => x.PostDate, new
+                        {
+                            @Value = DateTime.Now,
+                            style = "display: none;"
+                        })
+                        
+                        @Html.TextBoxFor(x => x.AuthorLogin, new
+                        {
+                            @Value = @User.Identity.Name,
+                            style = "display: none;"
+                        })
+                        
+                        <p>
+                            <input type="submit" class="btn btn-default" value="Save" id="save-article-btn" name="save-article-btn" />
+                        </p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</article>

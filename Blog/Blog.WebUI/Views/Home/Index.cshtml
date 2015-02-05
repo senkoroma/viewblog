@@ -1,0 +1,34 @@
+﻿
+@{
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+@using Blog.Entities
+
+@{
+    List<Article> articles = ViewBag.Articles;
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+
+            @foreach (var a in articles)
+            { 
+            <div class="post-preview">
+                <a href="/article/index/@a.Id">
+                    <h2 class="post-title">
+                        @a.Title
+                    </h2>
+                    <h3 class="post-subtitle">
+                        @a.Point
+                    </h3>
+                </a>
+                <p class="post-meta">Posted by <a href="#">@a.Author.Name</a> on @a.PostDate</p>
+            </div>
+            <hr>
+            }
+
+        </div>
+    </div>
+</div>

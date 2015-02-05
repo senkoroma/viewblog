@@ -1,0 +1,31 @@
+﻿@using Blog.WebUI.Models
+
+@{
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+@{
+    int articleId = ViewBag.ArticleId;
+}
+
+
+<input type="text" style="display: none;" value="@articleId" id="article-id"/>                     
+
+<section>
+    @Html.Partial("ContentPartial")
+</section>
+
+@if (Request.IsAuthenticated)
+    {
+<section>
+    @{
+        Html.RenderPartial("CommentsPartial");
+    }
+</section>
+
+        <section>
+            @{
+                Html.RenderPartial("NewCommentPartial");
+            }
+        </section>
+}

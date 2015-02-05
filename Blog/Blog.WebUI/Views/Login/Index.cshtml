@@ -1,0 +1,48 @@
+﻿@model Blog.WebUI.Models.AuthorModel
+
+
+@{
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+@{
+    string errorMsg = ViewBag.Msg;
+}
+
+
+<article>
+    <div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+            <div class="alert-info">
+                <h5>@errorMsg</h5>
+            </div>
+
+            <div class="post-preview">
+                @using (Html.BeginForm("Index", "Login", FormMethod.Post))
+                {
+                    <h5>Login:</h5>
+                    @Html.TextBoxFor(x => x.Login,
+                        new
+                        {
+                            Class = "form-control input-sm"
+                        })
+
+                    <h5>Password:</h5>
+                    @Html.PasswordFor(x => x.Password,
+                        new
+                        {
+                            Class = "form-control input-sm"
+                        })
+
+                    <p>
+                        <input type="submit" class="btn btn-default" value="Login" id="login-btn" name="login-btn" />
+                        <button type="button" class="btn btn-success"><a href="/RegisterAuthor/index">Register</a></button>
+                    </p>
+                }
+            </div>
+        </div>
+    </div>
+        </div>
+</article>
